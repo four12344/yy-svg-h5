@@ -1,0 +1,29 @@
+{
+  "name": "yy200511-h5-svg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "bash deploy.sh",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/four12344/yy-svg-h5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/four12344/yy-svg-h5/issues"
+  },
+  "homepage": "https://github.com/four12344/yy-svg-h5#readme",
+  "devDependencies": {
+    "vuepress": "^1.5.0"
+  }
+}
