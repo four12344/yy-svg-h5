@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>沿着路径移动</title>
+  <link rel="stylesheet" href="./common.css">
+</head>
+<body>
+  <div class="block">
+    <div class="t">1、画一条弧线轨道</div>
+    <div class="p">疑问：实际开发中，是直接用工具得出轨迹咩？</div>
+    <svg width="120" height="120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <!-- 视图窗口 -->
+      <rect x="0" y="0" width="120" height="120" stroke="pink" stroke-width="2" stroke-linecap="round" stroke-dasharray="5" fill="none" />
+      <!-- 轨道 -->
+      <path d="M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110" stroke="lightgrey" stroke-width="2" fill="none" id="theMotionPath"></path>
+      <circle cx="10" cy="110" r="3" fill="lightgrey"></circle>
+      <circle cx="110" cy="10" r="3" fill="lightgrey"></circle>
+    </svg>
+  </div>
+
+  <div class="block">
+    <div class="t">2、画运动的物体</div>
+    <svg width="120" height="120" version="1.1" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+      <!-- 视图窗口 -->
+      <rect x="0" y="0" width="120" height="120" stroke="pink" stroke-width="2" stroke-linecap="round" stroke-dasharray="5" fill="none" />
+      <!-- 轨道 -->
+      <path d="M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110" stroke="lightgrey" stroke-width="2" fill="none" id="theMotionPath"></path>
+      <circle cx="10" cy="110" r="3" fill="lightgrey"></circle>
+      <circle cx="110" cy="10" r="3" fill="lightgrey"></circle>
+      <!-- 运动的物体（一个圈一个正方形） -->
+      <g>
+        <circle cx="10" cy="110" r="5" fill="red"></circle>
+        <rect x="-10" y="100" width="20" height="10" stroke="red" stroke-width="1" fill="none" />
+      </g>
+    </svg>
+  </div>
+
+  <div class="block pb100">
+    <div class="t">3、使物体运动</div>
+    <div class="p">
+      animateMotion 可以使物体沿着路径运动。
+    </div>
+    <xmp>
+      <!-- 运动的物体（一个圈一个正方形） -->
+      <g>
+        <circle cx="10" cy="110" r="5" fill="red" />
+        <rect
+          x="-10" y="100" width="20" height="10"
+          stroke="red" stroke-width="1" fill="none" />
+        <animateMotion
+          path="M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110"
+          begin="0s" dur="6s" repeatCount="indefinite" />
+      </g>
+    </xmp>
+    <div class="p">
+      但是，我这里的路径怎么偏移了？因为我设置了圆圈的cx和cy，设置了矩形的x和y。导致了叠加？
+    </div>
+    <svg width="120" height="120" version="1.1" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;">
+      <!-- 视图窗口 -->
+      <rect x="0" y="0" width="120" height="120" stroke="pink" stroke-width="2" stroke-linecap="round" stroke-dasharray="5" fill="none" />
+      <!-- 轨道 -->
+      <path d="M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110" stroke="lightgrey" stroke-width="2" fill="none" id="theMotionPath"></path>
+      <circle cx="10" cy="110" r="3" fill="lightgrey"></circle>
+      <circle cx="110" cy="10" r="3" fill="lightgrey"></circle>
+      <!-- 运动的物体（一个圈一个正方形） -->
+      <g>
+        <circle cx="10" cy="110" r="5" fill="red"></circle>
+        <rect x="-10" y="100" width="20" height="10" stroke="red" stroke-width="1" fill="none" />
+        <animateMotion path="M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110" begin="0s" dur="6s" repeatCount="indefinite" />
+      </g>
+    </svg>
+  </div>
+
+
+  <div class="block">
+    <div class="t">3、让物体正常移动和旋转</div>
+    <xmp>
+      <g>
+        <circle r="5" fill="red"></circle>
+        <rect width="20" height="10" stroke="red" stroke-width="1" fill="none" />
+        <animateMotion
+          path="M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110"
+          begin="0s" dur="6s" repeatCount="indefinite" rotate="auto"/>
+      </g>
+    </xmp>
+    <svg width="120" height="120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <!-- 视图窗口 -->
+      <rect x="0" y="0" width="120" height="120" stroke="pink" stroke-width="2" stroke-linecap="round" stroke-dasharray="5" fill="none" />
+      <!-- 轨道 -->
+      <path d="M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110" stroke="lightgrey" stroke-width="2" fill="none" id="theMotionPath"></path>
+      <circle cx="10" cy="110" r="3" fill="lightgrey"></circle>
+      <circle cx="110" cy="10" r="3" fill="lightgrey"></circle>
+      <!-- 运动的物体（一个圈一个正方形） -->
+      <g>
+        <circle r="5" fill="red"></circle>
+        <rect width="20" height="10" stroke="red" stroke-width="1" fill="none" />
+        <animateMotion path="M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110" begin="0s" dur="6s" repeatCount="indefinite" rotate="auto"/>
+      </g>
+    </svg>
+  </div>
+
+
+
+  <div class="block">
+    <div class="t">4、复用path</div>
+    <div class="p red">
+      微信公众号的svg内容不支持id哦！！！
+    </div>
+    <xmp>
+        <path d="M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110"
+          stroke="lightgrey" stroke-width="2" fill="none"
+          id="theMotionPath"/>
+
+        <animateMotion begin="0s" dur="6s" repeatCount="indefinite" rotate="auto">
+          <mpath xlink:href="#theMotionPath"></mpath>
+        </animateMotion>
+    </xmp>
+    <svg width="120" height="120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <!-- 视图窗口 -->
+      <rect x="0" y="0" width="120" height="120" stroke="pink" stroke-width="2" stroke-linecap="round" stroke-dasharray="5" fill="none" />
+      <!-- 轨道 -->
+      <path d="M10,110 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110" stroke="lightgrey" stroke-width="2" fill="none" id="theMotionPath"></path>
+      <circle cx="10" cy="110" r="3" fill="lightgrey"></circle>
+      <circle cx="110" cy="10" r="3" fill="lightgrey"></circle>
+      <!-- 运动的物体（一个圈一个正方形） -->
+      <g>
+        <circle r="5" fill="red"></circle>
+        <rect width="20" height="10" stroke="red" stroke-width="1" fill="none" />
+        <animateMotion begin="0s" dur="6s" repeatCount="indefinite" rotate="auto">
+          <mpath xlink:href="#theMotionPath"></mpath>
+        </animateMotion>
+      </g>
+    </svg>
+  </div>
+
+</body>
+</html>

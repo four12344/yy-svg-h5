@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旋转</title>
+  <link rel="stylesheet" href="./common.css">
+</head>
+
+<body>
+  <div class="block">
+    <div class="t">效果图</div>
+    <svg width="120" height="120" version="1.1" xmlns="http://www.w3.org/2000/svg" class="ov">
+      <!-- 多边形 -->
+      <polygon points="60,30 90,90 30,90 20,30 50,30">
+        <animateTransform attributeName="transform" type="rotate" from="0 60 70" to="360 60 70" dur="10s" repeatCount="indefinite"></animateTransform>
+      </polygon>
+    </svg>
+  </div>
+
+  <div class="block">
+    <div class="t">1、画一个多边形</div>
+    <svg width="120" height="120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <!-- 视图窗口 -->
+      <rect x="0" y="0" width="120" height="120" stroke="pink" stroke-width="2" stroke-linecap="round"
+        stroke-dasharray="5" fill="none" />
+      <!-- 多边形 -->
+      <polygon points="10 60 20 110 110 110 70 60" fill="black" />
+    </svg>
+  </div>
+
+
+  <div class="block">
+    <div class="t">2、使它旋转</div>
+    <div class="p">疑问：有旋转中心吗？(原谅我的CSS水平菜如狗...)</div>
+    <xmp>
+      <polygon points="60,30 90,90 30,90 20,30 50,30" fill="black">
+        <animateTransform attributeName="transform" type="rotate" form="0 60 70" to="360 60 70" dur="10s"
+          repeatCount="indefinite" />
+      </polygon>
+    </xmp>
+    <div class="p">有的，看form和to的值，后面两个参数代表圆心。</div>
+    <div class="p">
+      rotate(a [x y]) 变换方法通过一个给定角度对一个指定的点进行旋转变换。如果x和y没有提供，那么默认为当前元素坐标系原点。否则，就以(x,y)为原点进行旋转。
+    </div>
+    <svg width="120" height="120" version="1.1" xmlns="http://www.w3.org/2000/svg" class="ov">
+      <!-- 视图窗口 -->
+      <rect x="0" y="0" width="120" height="120" stroke="pink" stroke-width="2" stroke-linecap="round"
+        stroke-dasharray="5" fill="none" />
+      <!-- 多边形 -->
+      <polygon points="60,30 90,90 30,90 20,30 50,30">
+        <animateTransform attributeName="transform" type="rotate" from="0 60 70" to="360 60 70" dur="10s" repeatCount="indefinite"></animateTransform>
+      </polygon>
+    </svg>
+  </div>
+</body>
+
+</html>
